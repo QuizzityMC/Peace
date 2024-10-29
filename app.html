@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat App Menu</title>
+    <title>Canary Chat App</title>
     <style>
         body {
             background-color: #000000;
@@ -28,7 +28,6 @@
         .server-icon {
             width: 40px;
             height: 40px;
-            background-color: #7289DA;
             margin: 10px 0;
             border-radius: 50%;
             cursor: pointer;
@@ -45,16 +44,16 @@
             cursor: pointer;
             background-size: cover;
         }
-        .user-list {
+        .user-list, .online-users {
             width: 200px;
-            background-color: #2C2F33;
+            background-color: rgba(50, 50, 50, 0.9);
             padding: 10px;
             margin: 10px;
-            float: left;
-            border-radius: 10px;
+            border-radius: 20px;
             display: flex;
             flex-direction: column;
             height: calc(100vh - 20px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .user-item {
             padding: 10px;
@@ -69,11 +68,12 @@
         .friend-list {
             flex: 1;
             padding: 10px;
-            background-color: #23272A;
+            background-color: rgba(50, 50, 50, 0.9);
             margin: 10px;
-            border-radius: 10px;
+            border-radius: 20px;
             display: flex;
             flex-direction: column;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .friend-item {
             padding: 10px;
@@ -86,15 +86,16 @@
             background-color: #444;
         }
         .chat-box {
-            width: calc(100% - 280px);
-            margin-left: 60px;
+            width: calc(100% - 520px);
+            margin: 10px;
             padding: 10px;
-            background-color: #23272A;
+            background-color: rgba(50, 50, 50, 0.9);
             display: none;
             flex-direction: column;
             justify-content: space-between;
-            border-radius: 10px;
+            border-radius: 20px;
             height: calc(100vh - 20px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .chat-content {
             flex: 1;
@@ -126,11 +127,14 @@
         .back-button {
             margin: 10px;
             padding: 10px;
-            background-color: #7289DA;
-            color: #FFFFFF;
+            background-color: #FFDF00;
+            color: black;
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
             cursor: pointer;
+        }
+        h3 {
+            text-align: center;
         }
     </style>
 </head>
