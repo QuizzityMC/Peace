@@ -66,29 +66,53 @@
             text-decoration: none;
             margin-top: 20px;
         }
+        .wrongred {
+            color: red;
+        }
     </style>
 </head>
-<body>
+<body class="no-theme">
     <div class="container">
         <img src="logo.png" alt="Canary Chat Logo">
         <h1>Login</h1>
         <div class="form">
-            <input type="text" placeholder="Username" id="username">
-            <input type="email" placeholder="Email" id="email">
-            <input type="password" placeholder="Password" id="password">
-            <button onclick="login()">Login</button>
+            <label for="instance"><b>Instance:</b></label>
+            <p id="verify"></p>
+            <input type="search" list="instances" placeholder="Instance URL" name="instance" id="instancein" required>
+            <datalist id="instances"></datalist>
+
+            <label for="uname"><b>Email:</b></label>
+            <input type="text" placeholder="Enter email address" name="uname" id="uname" required>
+
+            <label for="psw"><b>Password:</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+
+            <p class="wrongred" id="wrong"></p>
+            <div id="h-captcha"></div>
+            <button type="submit" onclick="check(event)">Login</button>
             <a href="register.html">Don't have an account? Register</a>
         </div>
     </div>
     <script>
-        function login() {
-            const username = document.getElementById('username').value;
+        async function check(e) {
+            e.preventDefault();
+            const instance = document.getElementById('instancein').value;
+            const username = document.getElementById('uname').value;
+            const password = document.getElementById('psw').value;
+            const response = await fetch(`${instance}/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
 
-            // Store the username in localStorage
-            localStorage.setItem('username', username);
-
-            // Redirect to the main app page
-            window.location.href = 'app.html';
+            const result = await response.json();
+            if (result.success) {
+                window.location.href = `${instance}/home`; // Redirect to the instance home
+            } else {
+                document.getElementById('wrong').textContent = 'Incorrect login credentials';
+            }
         }
     </script>
 </body>
