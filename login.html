@@ -73,6 +73,7 @@
         <img src="logo.png" alt="Canary Chat Logo">
         <h1>Login</h1>
         <div class="form">
+            <input type="text" placeholder="Username" id="username">
             <input type="email" placeholder="Email" id="email">
             <input type="password" placeholder="Password" id="password">
             <button onclick="login()">Login</button>
@@ -81,8 +82,13 @@
     </div>
     <script>
         function login() {
-            // Perform the login action here, e.g., validate inputs, send data to the server, etc.
-            window.location.href = 'app.html'; // Redirect to the main app page
+            const username = document.getElementById('username').value;
+
+            // Store the username in localStorage
+            localStorage.setItem('username', username);
+
+            // Redirect to the main app page
+            window.location.href = 'app.html';
         }
     </script>
 </body>
