@@ -261,6 +261,12 @@
                     "La France pour les Français! A France for only the French is the slogan of France’s right winged populist political party, the National Front FN. Founded in 1972 by Jean-Marie Le Pen, an openly anti-Semitic and racist politician, the FN has been seen, since its inception, as radical and controversial organization. "
                 ];
 
+                    const loggedInUserName = localStorage.getItem('username'); // Example from login
+                    const botUserName = 'Bot Name'; // Replace with the bot's name dynamically if needed
+
+                    document.getElementById('loggedInUser').textContent = loggedInUserName;
+                    document.getElementById('botUser').textContent = botUserName;
+
                 setTimeout(function () {
                     var responseMessage = document.createElement('div');
                     responseMessage.className = 'message';
