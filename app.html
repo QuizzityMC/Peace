@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canary Chat App</title>
+    <title>Chat App Menu</title>
     <style>
         body {
             background-color: #000000;
@@ -21,7 +21,6 @@
             flex-direction: column;
             justify-content: space-between;
         }
-
         .servers {
             display: flex;
             flex-direction: column;
@@ -29,6 +28,7 @@
         .server-icon {
             width: 40px;
             height: 40px;
+            background-color: #7289DA;
             margin: 10px 0;
             border-radius: 50%;
             cursor: pointer;
@@ -45,16 +45,16 @@
             cursor: pointer;
             background-size: cover;
         }
-        .user-list, .online-users {
+        .user-list {
             width: 200px;
-            background-color: rgba(50, 50, 50, 0.9);
+            background-color: #2C2F33;
             padding: 10px;
             margin: 10px;
-            border-radius: 20px;
+            float: left;
+            border-radius: 10px;
             display: flex;
             flex-direction: column;
             height: calc(100vh - 20px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .user-item {
             padding: 10px;
@@ -69,12 +69,11 @@
         .friend-list {
             flex: 1;
             padding: 10px;
-            background-color: rgba(50, 50, 50, 0.9);
+            background-color: #23272A;
             margin: 10px;
-            border-radius: 20px;
+            border-radius: 10px;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .friend-item {
             padding: 10px;
@@ -88,15 +87,15 @@
         }
         .chat-box {
             width: calc(100% - 520px);
-            margin: 10px;
+            margin-left: 60px;
+            margin-right: 240px;
             padding: 10px;
-            background-color: rgba(50, 50, 50, 0.9);
+            background-color: #23272A;
             display: none;
             flex-direction: column;
             justify-content: space-between;
-            border-radius: 20px;
+            border-radius: 10px;
             height: calc(100vh - 20px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .chat-content {
             flex: 1;
@@ -128,14 +127,22 @@
         .back-button {
             margin: 10px;
             padding: 10px;
-            background-color: #FFDF00;
-            color: black;
+            background-color: #7289DA;
+            color: #FFFFFF;
             border: none;
-            border-radius: 10px;
+            border-radius: 5px;
             cursor: pointer;
         }
-        h3 {
-            text-align: center;
+        .online-users {
+            width: 200px;
+            background-color: #2C2F33;
+            padding: 10px;
+            margin: 10px;
+            float: right;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 20px);
         }
     </style>
 </head>
@@ -159,6 +166,7 @@
         <div class="user-item" onclick="selectUser('Ava')">Ava</div>
     </div>
     <div class="friend-list">
+  
         <h3>Direct Messages</h3>
         <div class="friend-item" onclick="selectUser('Joe')">Joe</div>
         <div class="friend-item" onclick="selectUser('Steve')">Steve</div>
