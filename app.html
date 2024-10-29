@@ -86,8 +86,9 @@
             background-color: #444;
         }
         .chat-box {
-            width: calc(100% - 280px);
+            width: calc(100% - 520px);
             margin-left: 60px;
+            margin-right: 240px;
             padding: 10px;
             background-color: #23272A;
             display: none;
@@ -132,16 +133,27 @@
             border-radius: 5px;
             cursor: pointer;
         }
+        .online-users {
+            width: 200px;
+            background-color: #2C2F33;
+            padding: 10px;
+            margin: 10px;
+            float: right;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 20px);
+        }
     </style>
 </head>
 <body>
     <div class="server-bar">
         <div class="servers">
-            <div class="server-icon" onclick="showContent('Canary')" style="background-image: url('canary.png');"></div>
-            <div class="server-icon" onclick="showContent('Pandas')" style="background-image: url('panda.png');"></div>
-            <div class="server-icon" onclick="showContent('Rexland')" style="background-image: url('other.png');"></div>
-            <div class="server-icon" onclick="showContent('Dragons')" style="background-image: url('other.png');"></div>
-            <div class="server-icon" onclick="showContent('Cyber City')" style="background-image: url('other.png');"></div>
+            <div class="server-icon" onclick="showServer('Canary')" style="background-image: url('canary.png');"></div>
+            <div class="server-icon" onclick="showServer('Pandas')" style="background-image: url('panda.png');"></div>
+            <div class="server-icon" onclick="showServer('Rexland')" style="background-image: url('other.png');"></div>
+            <div class="server-icon" onclick="showServer('Dragons')" style="background-image: url('cyber.png');"></div>
+            <div class="server-icon" onclick="showServer('Cyber City')" style="background-image: url('apple.png');"></div>
         </div>
         <div class="discover-icon" onclick="showContent('Discover')" style="background-image: url('discover.png');"></div>
     </div>
@@ -167,14 +179,34 @@
         <div class="chat-input">
             <input type="text" id="chatInput" placeholder="Type a message...">
         </div>
-        <div class="typing-indicator" id="typingIndicator">(Bot User) is typing...</div>
+        <div class="typing-indicator" id="typingIndicator"></div>
+    </div>
+    <div class="online-users" id="onlineUsers">
+        <h3>Online Users</h3>
+        <div class="user-item">Bot Liam</div>
+        <div class="user-item">Bot Noah</div>
+        <div class="user-item">Bot Olivia</div>
+        <div class="user-item">Bot Emma</div>
+        <div class="user-item">Bot Ava</div>
     </div>
     <script>
+        const botNames = ["Bot Liam", "Bot Noah", "Bot Olivia", "Bot Emma", "Bot Ava"];
+        
         function selectUser(user) {
             document.getElementById('userList').style.display = 'none';
             document.querySelector('.friend-list').style.display = 'none';
             document.getElementById('chatBox').style.display = 'flex';
             document.getElementById('chatContent').innerHTML = `<div class="message">Chatting with ${user}</div>`;
+            document.getElementById('typingIndicator').textContent = user + " is typing...";
+        }
+
+        function showServer(server) {
+            document.getElementById('userList').style.display = 'none';
+            document.querySelector('.friend-list').style.display = 'none';
+            document.getElementById('chatBox').style.display = 'flex';
+            document.getElementById('chatContent').innerHTML = `<div class="message">Chatting in ${server}</div>`;
+            document.getElementById('typingIndicator').textContent = "Someone is typing...";
+            serverChat();
         }
 
         function goBack() {
@@ -183,44 +215,16 @@
             document.getElementById('chatBox').style.display = 'none';
         }
 
-        document.getElementById('chatInput').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                var chatContent = document.getElementById('chatContent');
-                var newMessage = document.createElement('div');
-                newMessage.className = 'message';
-                newMessage.textContent = this.value;
-                chatContent.appendChild(newMessage);
-                
-                var typingIndicator = document.getElementById('typingIndicator');
-                typingIndicator.style.display = 'block';
+        function serverChat() {
+            const messages = [
+                {name: "Bot Liam", text: "Hi everyone!", delay: 1000},
+                {name: "Bot Noah", text: "How's it going?", delay: 1500},
+                {name: "Bot Olivia", text: "Anyone want to play a game?", delay: 2000},
+                {name: "Bot Emma", text: "I just learned something cool today.", delay: 2500},
+                {name: "Bot Ava", text: "What's up?", delay: 1000},
+                // Add more messages as desired
+            ];
+            let currentMessage = 0;
 
-                var responses = [
-                    "Hello to you too!",
-                    "How are you today?",
-                    "Love you too.",
-                    "That's nice, let's have a party!",
-                    "Sure, sounds great!",
-                    "Let's catch up soon.",
-                    "I'm here for you.",
-                    "Absolutely, let's do it!",
-                    "I completely agree!",
-                    "That's a fantastic idea!",
-                    "Count me in!",
-                    "No way, really?"
-                ];
-
-                setTimeout(function () {
-                    var responseMessage = document.createElement('div');
-                    responseMessage.className = 'message';
-                    responseMessage.textContent = responses[Math.floor(Math.random() * responses.length)];
-                    chatContent.appendChild(responseMessage);
-                    typingIndicator.style.display = 'none';
-                    chatContent.scrollTop = chatContent.scrollHeight;
-                }, 1000);
-
-                this.value = '';
-            }
-        });
-    </script>
-</body>
-</html>
+            function showNextMessage() {
+                if (current[_{{{CITATION{{{_1{](https://github.com/DRUMPADD/Proyecto-p-gina-web/tree/f0ca2209b4571b4bdfb347118d8892637c4a472e/site%2Fchat%2Fappchat2%2Findex.php)
