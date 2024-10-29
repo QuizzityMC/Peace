@@ -15,6 +15,9 @@
             width: 60px;
             background-color: #2C2F33;
             padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
         }
         .server-icon {
             width: 40px;
@@ -67,20 +70,26 @@
 </head>
 <body>
     <div class="server-bar">
-        <div class="server-icon" onclick="showContent('Server 1')"></div>
-        <div class="server-icon" onclick="showContent('Server 2')"></div>
-        <div class="server-icon" onclick="showContent('Server 3')"></div>
+        <div class="server-icon" onclick="showContent('Canary')"></div>
+        <div class="server-icon" onclick="showContent('Pandas')"></div>
+        <div class="server-icon" onclick="showContent('Rexland')"></div>
+        <div class="server-icon" onclick="showContent('Dragons')"></div>
+        <div class="server-icon" onclick="showContent('Cyber City')"></div>
         <div class="discover-icon" onclick="showContent('Discover')"></div>
     </div>
     <div class="friend-list">
-        <div class="friend-item" onclick="showContent('Friend 1')">Friend 1</div>
-        <div class="friend-item" onclick="showContent('Friend 2')">Friend 2</div>
-        <div class="friend-item" onclick="showContent('Friend 3')">Friend 3</div>
+        <div class="friend-item" onclick="showContent('Joe')">Joe</div>
+        <div class="friend-item" onclick="showContent('Steve')">Steve</div>
+        <div class="friend-item" onclick="showContent('Layla')">Layla</div>
+        <div class="friend-item" onclick="showContent('Joachim')">Joachim</div>
+        <div class="friend-item" onclick="showContent('Eva')">Eva</div>
     </div>
     <div class="user-list">
-        <div class="user-item" onclick="showContent('User 1')">User 1</div>
-        <div class="user-item" onclick="showContent('User 2')">User 2</div>
-        <div class="user-item" onclick="showContent('User 3')">User 3</div>
+        <div class="user-item" onclick="showContent('Liam')">Liam</div>
+        <div class="user-item" onclick="showContent('Noah')">Noah</div>
+        <div class="user-item" onclick="showContent('Olivia')">Olivia</div>
+        <div class="user-item" onclick="showContent('Emma')">Emma</div>
+        <div class="user-item" onclick="showContent('Ava')">Ava</div>
     </div>
     <script>
         function showContent(content) {
