@@ -10,6 +10,7 @@
             color: #FFFFFF;
             font-family: Arial, sans-serif;
             display: flex;
+            margin: 0;
         }
         .server-bar {
             width: 60px;
@@ -38,10 +39,27 @@
             border-radius: 50%;
             cursor: pointer;
         }
+        .user-list {
+            width: 200px;
+            background-color: #2C2F33;
+            padding: 10px;
+            margin: 10px;
+            float: left;
+        }
+        .user-item {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #333;
+            cursor: pointer;
+        }
+        .user-item:hover {
+            background-color: #444;
+        }
         .friend-list {
             flex: 1;
             padding: 10px;
             background-color: #23272A;
+            margin: 10px;
         }
         .friend-item {
             padding: 10px;
@@ -52,19 +70,29 @@
         .friend-item:hover {
             background-color: #444;
         }
-        .user-list {
-            width: 200px;
-            background-color: #2C2F33;
+        .chat-box {
+            width: calc(100% - 280px);
+            margin-left: 60px;
             padding: 10px;
+            background-color: #23272A;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-        .user-item {
+        .chat-content {
+            flex: 1;
+            overflow-y: auto;
+        }
+        .chat-input {
+            margin-top: 10px;
+        }
+        .chat-input input {
+            width: 100%;
             padding: 10px;
-            margin: 5px 0;
             background-color: #333;
-            cursor: pointer;
-        }
-        .user-item:hover {
-            background-color: #444;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -77,24 +105,41 @@
         <div class="server-icon" onclick="showContent('Cyber City')"></div>
         <div class="discover-icon" onclick="showContent('Discover')"></div>
     </div>
-    <div class="friend-list">
-        <div class="friend-item" onclick="showContent('Joe')">Joe</div>
-        <div class="friend-item" onclick="showContent('Steve')">Steve</div>
-        <div class="friend-item" onclick="showContent('Layla')">Layla</div>
-        <div class="friend-item" onclick="showContent('Joachim')">Joachim</div>
-        <div class="friend-item" onclick="showContent('Eva')">Eva</div>
-    </div>
     <div class="user-list">
+        <h3>Users</h3>
         <div class="user-item" onclick="showContent('Liam')">Liam</div>
         <div class="user-item" onclick="showContent('Noah')">Noah</div>
         <div class="user-item" onclick="showContent('Olivia')">Olivia</div>
         <div class="user-item" onclick="showContent('Emma')">Emma</div>
         <div class="user-item" onclick="showContent('Ava')">Ava</div>
     </div>
+    <div class="chat-box">
+        <div class="friend-list">
+            <h3>Direct Messages</h3>
+            <div class="friend-item" onclick="showContent('Joe')">Joe</div>
+            <div class="friend-item" onclick="showContent('Steve')">Steve</div>
+            <div class="friend-item" onclick="showContent('Layla')">Layla</div>
+            <div class="friend-item" onclick="showContent('Joachim')">Joachim</div>
+            <div class="friend-item" onclick="showContent('Eva')">Eva</div>
+        </div>
+        <div class="chat-content" id="chatContent"></div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Type a message...">
+        </div>
+    </div>
     <script>
         function showContent(content) {
-            alert(content);
+            document.getElementById('chatContent').textContent = 'Chatting with ' + content;
         }
+        document.getElementById('chatInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                var chatContent = document.getElementById('chatContent');
+                var newMessage = document.createElement('div');
+                newMessage.textContent = this.value;
+                chatContent.appendChild(newMessage);
+                this.value = '';
+            }
+        });
     </script>
 </body>
 </html>
