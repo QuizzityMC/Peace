@@ -27,6 +27,7 @@
             margin: 10px 0;
             border-radius: 50%;
             cursor: pointer;
+            background-size: cover;
         }
         .server-icon:hover {
             background-color: #99AAB5;
@@ -34,10 +35,10 @@
         .discover-icon {
             width: 40px;
             height: 40px;
-            background-color: #43B581;
             margin: 10px 0;
             border-radius: 50%;
             cursor: pointer;
+            background-size: cover;
         }
         .user-list {
             width: 200px;
@@ -45,12 +46,14 @@
             padding: 10px;
             margin: 10px;
             float: left;
+            border-radius: 10px;
         }
         .user-item {
             padding: 10px;
             margin: 5px 0;
             background-color: #333;
             cursor: pointer;
+            border-radius: 5px;
         }
         .user-item:hover {
             background-color: #444;
@@ -60,12 +63,14 @@
             padding: 10px;
             background-color: #23272A;
             margin: 10px;
+            border-radius: 10px;
         }
         .friend-item {
             padding: 10px;
             margin: 5px 0;
             background-color: #333;
             cursor: pointer;
+            border-radius: 5px;
         }
         .friend-item:hover {
             background-color: #444;
@@ -75,9 +80,10 @@
             margin-left: 60px;
             padding: 10px;
             background-color: #23272A;
-            display: flex;
+            display: none;
             flex-direction: column;
             justify-content: space-between;
+            border-radius: 10px;
         }
         .chat-content {
             flex: 1;
@@ -94,49 +100,93 @@
             border: none;
             border-radius: 5px;
         }
+        .message {
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #444;
+            border-radius: 10px;
+        }
+        .back-button {
+            margin: 10px;
+            padding: 10px;
+            background-color: #7289DA;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <div class="server-bar">
-        <div class="server-icon" onclick="showContent('Canary')"></div>
-        <div class="server-icon" onclick="showContent('Pandas')"></div>
-        <div class="server-icon" onclick="showContent('Rexland')"></div>
-        <div class="server-icon" onclick="showContent('Dragons')"></div>
-        <div class="server-icon" onclick="showContent('Cyber City')"></div>
-        <div class="discover-icon" onclick="showContent('Discover')"></div>
+        <div class="server-icon" onclick="showContent('Canary')" style="background-image: url('canary.png');"></div>
+        <div class="server-icon" onclick="showContent('Pandas')" style="background-image: url('panda.png');"></div>
+        <div class="server-icon" onclick="showContent('Rexland')" style="background-image: url('other.png');"></div>
+        <div class="server-icon" onclick="showContent('Dragons')" style="background-image: url('other.png');"></div>
+        <div class="server-icon" onclick="showContent('Cyber City')" style="background-image: url('other.png');"></div>
+        <div class="discover-icon" onclick="showContent('Discover')" style="background-image: url('discover.png');"></div>
     </div>
-    <div class="user-list">
+    <div class="user-list" id="userList">
         <h3>Users</h3>
-        <div class="user-item" onclick="showContent('Liam')">Liam</div>
-        <div class="user-item" onclick="showContent('Noah')">Noah</div>
-        <div class="user-item" onclick="showContent('Olivia')">Olivia</div>
-        <div class="user-item" onclick="showContent('Emma')">Emma</div>
-        <div class="user-item" onclick="showContent('Ava')">Ava</div>
+        <div class="user-item" onclick="selectUser('Liam')">Liam</div>
+        <div class="user-item" onclick="selectUser('Noah')">Noah</div>
+        <div class="user-item" onclick="selectUser('Olivia')">Olivia</div>
+        <div class="user-item" onclick="selectUser('Emma')">Emma</div>
+        <div class="user-item" onclick="selectUser('Ava')">Ava</div>
     </div>
-    <div class="chat-box">
-        <div class="friend-list">
-            <h3>Direct Messages</h3>
-            <div class="friend-item" onclick="showContent('Joe')">Joe</div>
-            <div class="friend-item" onclick="showContent('Steve')">Steve</div>
-            <div class="friend-item" onclick="showContent('Layla')">Layla</div>
-            <div class="friend-item" onclick="showContent('Joachim')">Joachim</div>
-            <div class="friend-item" onclick="showContent('Eva')">Eva</div>
-        </div>
+    <div class="friend-list">
+        <h3>Direct Messages</h3>
+        <div class="friend-item" onclick="selectUser('Joe')">Joe</div>
+        <div class="friend-item" onclick="selectUser('Steve')">Steve</div>
+        <div class="friend-item" onclick="selectUser('Layla')">Layla</div>
+        <div class="friend-item" onclick="selectUser('Joachim')">Joachim</div>
+        <div class="friend-item" onclick="selectUser('Eva')">Eva</div>
+    </div>
+    <div class="chat-box" id="chatBox">
+        <button class="back-button" onclick="goBack()">Back</button>
         <div class="chat-content" id="chatContent"></div>
         <div class="chat-input">
             <input type="text" id="chatInput" placeholder="Type a message...">
         </div>
     </div>
     <script>
-        function showContent(content) {
-            document.getElementById('chatContent').textContent = 'Chatting with ' + content;
+        function selectUser(user) {
+            document.getElementById('userList').style.display = 'none';
+            document.querySelector('.friend-list').style.display = 'none';
+            document.getElementById('chatBox').style.display = 'flex';
+            document.getElementById('chatContent').innerHTML = `<div class="message">Chatting with ${user}</div>`;
         }
+
+        function goBack() {
+            document.getElementById('userList').style.display = 'block';
+            document.querySelector('.friend-list').style.display = 'block';
+            document.getElementById('chatBox').style.display = 'none';
+        }
+
         document.getElementById('chatInput').addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
                 var chatContent = document.getElementById('chatContent');
                 var newMessage = document.createElement('div');
+                newMessage.className = 'message';
                 newMessage.textContent = this.value;
                 chatContent.appendChild(newMessage);
+
+                var responses = [
+                    "Hello to you too!",
+                    "How are you today?",
+                    "Love you too.",
+                    "That's nice, let's have a party!",
+                    "Sure, sounds great!",
+                    "Let's catch up soon.",
+                    "I'm here for you.",
+                    "Absolutely, let's do it!"
+                ];
+
+                var responseMessage = document.createElement('div');
+                responseMessage.className = 'message';
+                responseMessage.textContent = responses[Math.floor(Math.random() * responses.length)];
+                chatContent.appendChild(responseMessage);
+
                 this.value = '';
             }
         });
