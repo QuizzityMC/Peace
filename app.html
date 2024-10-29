@@ -11,6 +11,7 @@
             font-family: Arial, sans-serif;
             display: flex;
             margin: 0;
+            height: 100vh;
         }
         .server-bar {
             width: 60px;
@@ -47,6 +48,9 @@
             margin: 10px;
             float: left;
             border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 20px);
         }
         .user-item {
             padding: 10px;
@@ -64,6 +68,8 @@
             background-color: #23272A;
             margin: 10px;
             border-radius: 10px;
+            display: flex;
+            flex-direction: column;
         }
         .friend-item {
             padding: 10px;
@@ -84,6 +90,7 @@
             flex-direction: column;
             justify-content: space-between;
             border-radius: 10px;
+            height: calc(100vh - 20px);
         }
         .chat-content {
             flex: 1;
@@ -91,6 +98,7 @@
         }
         .chat-input {
             margin-top: 10px;
+            position: relative;
         }
         .chat-input input {
             width: 100%;
@@ -105,6 +113,11 @@
             padding: 10px;
             background-color: #444;
             border-radius: 10px;
+        }
+        .typing-indicator {
+            display: none;
+            color: #AAA;
+            font-style: italic;
         }
         .back-button {
             margin: 10px;
@@ -148,6 +161,7 @@
         <div class="chat-input">
             <input type="text" id="chatInput" placeholder="Type a message...">
         </div>
+        <div class="typing-indicator" id="typingIndicator">(Bot User) is typing...</div>
     </div>
     <script>
         function selectUser(user) {
@@ -170,6 +184,9 @@
                 newMessage.className = 'message';
                 newMessage.textContent = this.value;
                 chatContent.appendChild(newMessage);
+                
+                var typingIndicator = document.getElementById('typingIndicator');
+                typingIndicator.style.display = 'block';
 
                 var responses = [
                     "Hello to you too!",
@@ -179,13 +196,22 @@
                     "Sure, sounds great!",
                     "Let's catch up soon.",
                     "I'm here for you.",
-                    "Absolutely, let's do it!"
+                    "Absolutely, let's do it!",
+                    "I completely agree!",
+                    "That's a fantastic idea!",
+                    "Count me in!",
+                    "No way, really?"
+                    "You love Pandas too?"
                 ];
 
-                var responseMessage = document.createElement('div');
-                responseMessage.className = 'message';
-                responseMessage.textContent = responses[Math.floor(Math.random() * responses.length)];
-                chatContent.appendChild(responseMessage);
+                setTimeout(function () {
+                    var responseMessage = document.createElement('div');
+                    responseMessage.className = 'message';
+                    responseMessage.textContent = responses[Math.floor(Math.random() * responses.length)];
+                    chatContent.appendChild(responseMessage);
+                    typingIndicator.style.display = 'none';
+                    chatContent.scrollTop = chatContent.scrollHeight;
+                }, 1000);
 
                 this.value = '';
             }
