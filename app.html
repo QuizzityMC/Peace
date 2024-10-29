@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat App Menu</title>
+    <title>Canary Chat App</title>
     <style>
         body {
             background-color: #000000;
@@ -28,7 +28,6 @@
         .server-icon {
             width: 40px;
             height: 40px;
-            background-color: #7289DA;
             margin: 10px 0;
             border-radius: 50%;
             cursor: pointer;
@@ -45,16 +44,16 @@
             cursor: pointer;
             background-size: cover;
         }
-        .user-list {
+        .user-list, .online-users {
             width: 200px;
-            background-color: #2C2F33;
+            background-color: rgba(50, 50, 50, 0.9);
             padding: 10px;
             margin: 10px;
-            float: left;
-            border-radius: 10px;
+            border-radius: 20px;
             display: flex;
             flex-direction: column;
             height: calc(100vh - 20px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .user-item {
             padding: 10px;
@@ -69,11 +68,12 @@
         .friend-list {
             flex: 1;
             padding: 10px;
-            background-color: #23272A;
+            background-color: rgba(50, 50, 50, 0.9);
             margin: 10px;
-            border-radius: 10px;
+            border-radius: 20px;
             display: flex;
             flex-direction: column;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .friend-item {
             padding: 10px;
@@ -87,15 +87,15 @@
         }
         .chat-box {
             width: calc(100% - 520px);
-            margin-left: 60px;
-            margin-right: 240px;
+            margin: 10px;
             padding: 10px;
-            background-color: #23272A;
+            background-color: rgba(50, 50, 50, 0.9);
             display: none;
             flex-direction: column;
             justify-content: space-between;
-            border-radius: 10px;
+            border-radius: 20px;
             height: calc(100vh - 20px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .chat-content {
             flex: 1;
@@ -127,22 +127,14 @@
         .back-button {
             margin: 10px;
             padding: 10px;
-            background-color: #7289DA;
-            color: #FFFFFF;
+            background-color: #FFDF00;
+            color: black;
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
             cursor: pointer;
         }
-        .online-users {
-            width: 200px;
-            background-color: #2C2F33;
-            padding: 10px;
-            margin: 10px;
-            float: right;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            height: calc(100vh - 20px);
+        h3 {
+            text-align: center;
         }
     </style>
 </head>
@@ -166,7 +158,6 @@
         <div class="user-item" onclick="selectUser('Ava')">Ava</div>
     </div>
     <div class="friend-list">
-  
         <h3>Direct Messages</h3>
         <div class="friend-item" onclick="selectUser('Joe')">Joe</div>
         <div class="friend-item" onclick="selectUser('Steve')">Steve</div>
@@ -254,12 +245,6 @@
                     "I'm thrilled about this.",
                     "La France pour les Français! A France for only the French is the slogan of France’s right winged populist political party, the National Front FN. Founded in 1972 by Jean-Marie Le Pen, an openly anti-Semitic and racist politician, the FN has been seen, since its inception, as radical and controversial organization. "
                 ];
-
-                    const loggedInUserName = localStorage.getItem('username'); // Example from login
-                    const botUserName = 'Bot Name'; // Replace with the bot's name dynamically if needed
-
-                    document.getElementById('loggedInUser').textContent = loggedInUserName;
-                    document.getElementById('botUser').textContent = botUserName;
 
                 setTimeout(function () {
                     var responseMessage = document.createElement('div');
