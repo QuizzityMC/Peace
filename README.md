@@ -1,11 +1,11 @@
 # Canary-Client
 
-The As-of-yet nonexistent client for the Canary Chat app, written is HTML, CSS and TS. 
+This is the hell edition of the Canary Client (It's not actually part of the project)
 
 **Installation**
 
-Coming soon
+Fork the repository, spin up a github pages site and you're set!
 
 **Connecting to Canary**
 
-Canary Chat is useable with all Spacebar-compatible clients. Simply enter https://chat.quizzity.tech/ as the instance, ad all will work!
+Canary Chat is useable with all Spacebar-compatible clients. Simply enter https://chat.quizzity.tech/ as the instance, and all will work!
