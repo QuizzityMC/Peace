@@ -15,18 +15,20 @@
         }
         .server-bar {
             width: 60px;
-                background-color: #2C2F33;
-                padding: 10px;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                border-radius: 10px; /* Rounded corners */
-                position: absolute;
-                left: 10px;
-                top: 10px;
-                z-index: 100; /* Ensure it floats above other content */
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Floating effect */
+            background-color: #2C2F33;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-radius: 10px; /* Rounded corners */
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            z-index: 100; /* Ensure it floats above other content */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Floating effect */
+            height: calc(100vh - 20px); /* Full height minus padding/margin */
         }
+
         .servers {
             display: flex;
             flex-direction: column;
