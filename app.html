@@ -19,7 +19,11 @@
             padding: 10px;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
+            justify-content: space-between;
+        }
+        .servers {
+            display: flex;
+            flex-direction: column;
         }
         .server-icon {
             width: 40px;
@@ -132,11 +136,13 @@
 </head>
 <body>
     <div class="server-bar">
-        <div class="server-icon" onclick="showContent('Canary')" style="background-image: url('canary.png');"></div>
-        <div class="server-icon" onclick="showContent('Pandas')" style="background-image: url('panda.png');"></div>
-        <div class="server-icon" onclick="showContent('Rexland')" style="background-image: url('other.png');"></div>
-        <div class="server-icon" onclick="showContent('Dragons')" style="background-image: url('other.png');"></div>
-        <div class="server-icon" onclick="showContent('Cyber City')" style="background-image: url('other.png');"></div>
+        <div class="servers">
+            <div class="server-icon" onclick="showContent('Canary')" style="background-image: url('canary.png');"></div>
+            <div class="server-icon" onclick="showContent('Pandas')" style="background-image: url('panda.png');"></div>
+            <div class="server-icon" onclick="showContent('Rexland')" style="background-image: url('other.png');"></div>
+            <div class="server-icon" onclick="showContent('Dragons')" style="background-image: url('other.png');"></div>
+            <div class="server-icon" onclick="showContent('Cyber City')" style="background-image: url('other.png');"></div>
+        </div>
         <div class="discover-icon" onclick="showContent('Discover')" style="background-image: url('discover.png');"></div>
     </div>
     <div class="user-list" id="userList">
@@ -172,8 +178,8 @@
         }
 
         function goBack() {
-            document.getElementById('userList').style.display = 'block';
-            document.querySelector('.friend-list').style.display = 'block';
+            document.getElementById('userList').style.display = 'flex';
+            document.querySelector('.friend-list').style.display = 'flex';
             document.getElementById('chatBox').style.display = 'none';
         }
 
@@ -201,7 +207,6 @@
                     "That's a fantastic idea!",
                     "Count me in!",
                     "No way, really?"
-                    "You like Pandas too?"
                 ];
 
                 setTimeout(function () {
